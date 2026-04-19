@@ -1,0 +1,29 @@
+Project Name: Financial Fraud Analysis
+Author: Nick Peril
+
+PROJECT CONCLUSIONS:
+1. Which insights did you gain from your EDA?
+During EDA, I have identified several important insights.
+    * The dataset was highly imbalanced, with fraudulent transactions representing only a very small portion of the data. This indicated that accuracy alone would not be a reliable metric, and that evaluation should focus more on F1-score to better capture fraud detection performance.
+    * I also observed that transaction types such as transfers and cash-outs were more commonly associated with fraudulent activity.
+    * Features related to account balances before and after transactions showed strong patterns, particularly when large discrepancies occurred. These patterns suggested that fraudulent transactions often involve significant and unusual changes in account balances.
+
+2. How did you determine which columns to drop or keep? If your EDA informed this process, explain which insights you used to determine which columns were not needed.
+    I based my column selection on both exploratory data analysis and the relevance of each feature to the modeling objective. I removed columns such as nameOrig and nameDest because they are unique identifiers and do not provide meaningful patterns for predicting fraud. Including these features could introduce noise and reduce the model’s ability to generalize.
+    I also dropped the isFlaggedFraud column because it represents a rule-based flag (transactions over a certain threshold) rather than actual observed fraud. Keeping this feature could lead to data leakage, as it indirectly contains information about the target variable.
+    I retained all other features because they provide useful contextual or behavioral information about transactions. In particular, transaction-related features such as amount and balance variables were kept, as they are more likely to capture patterns associated with fraudulent activity.
+
+3. Which hyperparameter tuning strategy did you use? Grid-search or random-search? Why?
+    I used RandomizedSearchcv as my hyperparameter tuning strategy. I chose this method because it allows for efficient exploration of a wide range of hyperparameter combinations without evaluating every possible option.
+    Compared to GridSearchCV, RandomizedSearchCV is more computationally efficient, especially when working with large datasets and complex models like Random Forest. It enables faster experimentation while still providing strong performance improvements by sampling the most promising areas of the parameter space.
+
+4. How did your model's performance change after discovering optimal hyperparameters?
+	For my Random Forest model, the tuned one performed slightly lower than the baseline (from 0.88 to 0.80 F1 score), likely because hyperparameter tuning was conducted on a sampled subset of the data, which may not fully capture the overall data distribution. This could mean that tuning does not always guarantee better performance.
+	On the other hand, for Gradient Boosting, the tuned model performed better (from 0.65 to 0.71 F1 score). This showed that hyperparameter tuning helped make the model better at detecting fraud. The improvement likely comes from better balance between precision and recall, meaning fewer missed fraud cases compared to the baseline. 
+
+What was your final F1 Score?
+	The final F1 scores varied between the two models after hyperparameter tuning. The Gradient Boosting model achieved a final F1 score of 0.712, improving from its baseline performance of 0.648, indicating that tuning helped the model better balance precision and recall.
+On the other hand, the Random Forest model achieved a final F1 score of 0.803, which was slightly lower than its baseline score of 0.879. This suggests that while hyperparameter tuning explored different configurations, the baseline Random Forest model was already well-suited for the dataset, and tuning may have led to a configuration that slightly reduced its performance.
+Overall, the Random Forest model still produced the highest F1 score between the two models, making it the better-performing model for this fraud detection task. However, the Gradient Boosting model demonstrated more noticeable improvement from tuning, highlighting its sensitivity to hyperparameter optimization.
+
+
