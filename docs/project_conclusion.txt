@@ -21,9 +21,9 @@ During EDA, I have identified several important insights.
 	For my Random Forest model, the tuned one performed slightly lower than the baseline (from 0.88 to 0.80 F1 score), likely because hyperparameter tuning was conducted on a sampled subset of the data, which may not fully capture the overall data distribution. This could mean that tuning does not always guarantee better performance.
 	On the other hand, for Gradient Boosting, the tuned model performed better (from 0.65 to 0.71 F1 score). This showed that hyperparameter tuning helped make the model better at detecting fraud. The improvement likely comes from better balance between precision and recall, meaning fewer missed fraud cases compared to the baseline. 
 
-What was your final F1 Score?
+5. What was your final F1 Score?
 	The final F1 scores varied between the two models after hyperparameter tuning. The Gradient Boosting model achieved a final F1 score of 0.712, improving from its baseline performance of 0.648, indicating that tuning helped the model better balance precision and recall.
-On the other hand, the Random Forest model achieved a final F1 score of 0.803, which was slightly lower than its baseline score of 0.879. This suggests that while hyperparameter tuning explored different configurations, the baseline Random Forest model was already well-suited for the dataset, and tuning may have led to a configuration that slightly reduced its performance.
-Overall, the Random Forest model still produced the highest F1 score between the two models, making it the better-performing model for this fraud detection task. However, the Gradient Boosting model demonstrated more noticeable improvement from tuning, highlighting its sensitivity to hyperparameter optimization.
+    On the other hand, the Random Forest model achieved a final F1 score of 0.803, which was slightly lower than its baseline score of 0.879. This suggests that while hyperparameter tuning explored different configurations, the baseline Random Forest model was already well-suited for the dataset, and tuning may have led to a configuration that slightly reduced its performance.
+    Overall, the Random Forest model still produced the highest F1 score between the two models, making it the better-performing model for this fraud detection task. However, the Gradient Boosting model demonstrated more noticeable improvement from tuning, highlighting its sensitivity to hyperparameter optimization.
 
 
